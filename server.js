@@ -1,30 +1,40 @@
 const jsonServer = require("json-server");
+const url = require("url");
 const server = jsonServer.create();
 const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults();
 const port = process.env.PORT || 3001;
 const key = process.env.API_KEY;
+const protectedRoutes = ["/products", "/categories"];
 
 function isAuthorized(request) {
-  const api_key = request.query.api_key;
-  if (!api_key) {
-    console.log("Missing API key");
+  const apiKey = request.query.api_key;
+  if (!apiKey) {
     return false;
   }
-  if (api_key !== key) {
-    console.log("Wrong API key");
+  if (apiKey !== key) {
     return false;
   }
 
   return true;
 }
 
+function isProtected(request) {
+  const path = url.parse(request.url).pathname;
+
+  return protectedRoutes.includes(path);
+}
+
 server.use((req, res, next) => {
-  if (!isAuthorized(req)) {
-    res.sendStatus(401);
+  if (!isProtected(req)) {
+    return next();
   }
 
-  next();
+  if (!isAuthorized(req)) {
+    return res.sendStatus(401);
+  }
+
+  return next();
 });
 
 server.use(middlewares);
