@@ -1,0 +1,35 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Socks grey",
+      "price": "15",
+      "available": true,
+      "categoryId": 1
+    },
+    {
+      "id": 2,
+      "name": "Socks blue",
+      "price": "15",
+      "available": false,
+      "categoryId": 1
+    },
+    {
+      "id": 3,
+      "name": "SN Logo",
+      "price": "7",
+      "available": true,
+      "categoryId": 2
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Clothes"
+    },
+    {
+      "id": 2,
+      "name": "Stickers"
+    }
+  ]
+}
