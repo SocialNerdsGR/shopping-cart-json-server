@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "json-server --port 80 db.json",
+    "start": "node server.js",
     "dev": "json-server --port 3001 --watch db.json"
   },
   "keywords": [],
