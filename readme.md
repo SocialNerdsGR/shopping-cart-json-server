@@ -34,10 +34,9 @@ Run image
 
 ## Usage
 
-Shoppping cart API exposes 2 resources:
+Shoppping cart API exposes 1 resource:
 
 - `products`
-- `categories`
 
 JSON-Server provides some additional functionallity like filtering, pagination and more. Read the JSON-Server documentation for more.
 
